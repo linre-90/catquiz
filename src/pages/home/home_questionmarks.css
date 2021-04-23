@@ -1,0 +1,138 @@
+.home_questionmarks_container{
+    position: relative;
+    margin-left: auto;
+    display: inline;
+    top:-200px;
+    background-color: rgba(255, 255, 255, 1);
+    width: 100%;
+    height: 400px;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.home_mark_common{
+    opacity: 0.25;
+}
+
+.home_mark1{
+    position: relative;
+    transform: rotateZ(60deg);
+    animation: animation_question_mark 7s forwards;
+    animation-iteration-count: infinite;
+    font-size: 26px;
+}
+
+.home_mark2{
+    position: relative;
+    left: 500px;
+    transform: rotateZ(-50deg);
+    animation: animation_question_mark 4s forwards;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+    font-size: 12px;
+
+}
+.home_mark3{
+    position: relative;
+    left:250px;
+    transform: rotateZ(180deg);
+    animation: animation_question_mark 5s forwards;
+    animation-iteration-count: infinite;
+    animation-delay: 2s;
+    font-size: 50px;
+
+}
+
+.home_mark4{
+    position: relative;
+    left: -300px;
+    transform: rotateZ(180deg);
+    animation: animation_question_mark 5s forwards;
+    animation-iteration-count: infinite;
+    font-size: 100px;
+}
+
+.home_mark5{
+    position: relative;
+    left: -400px;
+    transform: rotateZ(66deg);
+    animation: animation_question_mark 10s forwards;
+    animation-iteration-count: infinite;
+    animation-delay: 3s;
+}
+
+.home_mark6{
+    position: relative;
+    left: 100px;
+    transform: rotateZ(80deg);
+    animation: animation_question_mark 5s forwards;
+    animation-iteration-count: infinite;
+    animation-delay: 4s;
+    font-size: 22px;
+}
+
+.home_mark7{
+    position: relative;
+    left: 250px;
+    transform: rotateZ(-90deg);
+    animation: animation_question_mark 4s forwards;
+    animation-iteration-count: infinite;
+    animation-delay: 5s;
+
+}
+
+.home_mark8{
+    position: relative;
+    left: 60px;
+    transform: rotateZ(20deg);
+    animation: animation_question_mark 5s forwards;
+    animation-iteration-count: infinite;
+    animation-delay: 6s;
+    font-size: 30px;
+}
+
+.home_mark9{
+    position: relative;
+    left: -60px;
+    transform: rotateZ(350deg);
+    animation: animation_question_mark 9s forwards;
+    animation-iteration-count: infinite;
+    animation-delay: 3s;
+    font-size: 30px;
+}
+
+.home_mark10{
+    position: relative;
+    left: -150px;
+    transform: rotateZ(200deg);
+    animation: animation_question_mark 5s forwards;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+    font-size: 15px;
+}
+
+.home_mark11{
+    position: relative;
+    left: 150px;
+    transform: rotateZ(198deg);
+    animation: animation_question_mark 10s forwards;
+    animation-iteration-count: infinite;
+    animation-delay: 2s;
+    font-size: 21px;
+}
+
+.home_mark12{
+    position: relative;
+    left: 320px;
+    transform: rotateZ(33deg);
+    animation: animation_question_mark 7s forwards;
+    animation-iteration-count: infinite;
+    animation-delay: 6s;
+    font-size: 40px;
+}
+
+
+@keyframes animation_question_mark{
+    80%{transform: translateY(500px);}
+    100%{opacity: 0;}
+}

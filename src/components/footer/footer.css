@@ -1,0 +1,23 @@
+.footer_background{
+    background-color: black;
+    height: 400px;
+    color: aliceblue;
+    text-align: center;
+}
+
+.footer_header{
+    padding: 10px;
+}
+
+.footer_link{
+    color: white;
+    font-size: large;
+}
+
+.footer_link:hover{
+    cursor: pointer;
+}
+
+.footer_link:visited{
+    color: white;
+}

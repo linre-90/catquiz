@@ -1,0 +1,208 @@
+
+/**LENS FOR BRANDING**/
+
+.home_lens_section{
+    margin-top: 0px;
+    width: 100%;
+    overflow: hidden;
+}
+.home_lens_back {
+	background-color: rgba(255, 255, 255, 1);
+	width: 100%;
+	height: 200px;
+}
+
+.home_lens_handle{
+    position: relative;
+    background-color: black;
+    height: 10px;
+    border-radius: 5px;
+    transform: rotateZ(60deg);
+    top: 50px;
+    left: 20px;
+}
+
+.home_lens_base {
+	position: relative;
+	top: 25px;
+	width: 200px;
+	height: 100px;
+    margin: auto;
+	background-color: white;
+	mix-blend-mode: hard-light;
+}
+
+.home_lens_hole {
+	width: 40px;
+	height: 40px;
+    margin-top: 25px;
+    transform: translateX(-40px);
+	border-radius: 25px;
+	background-color: gray;
+    border: 6px solid black;
+    animation: lens_move 25s ease forwards;
+    animation-iteration-count: infinite;
+}
+
+.home_lens_branding{
+    position: relative;
+    top: 89px;
+    margin: 0;
+    font-size: 25px;
+}
+
+@keyframes lens_move{
+    50%{transform: translateX(200px);}
+    100%{transform: translateX(-40px);}
+}
+
+
+
+
+/**PAWNS START**/
+.home_background_pawn_common{
+    position: absolute;
+    z-index: 1;
+    animation: pawn_animation 1s forwards;
+    animation-iteration-count: infinite;
+}
+
+.home_background_pawn_one{
+    left: 10px;
+    top: 50px;
+}
+
+.home_background_pawn_one_rotation{
+    transform: rotateZ(120deg);
+}
+
+.home_background_pawn_two{
+    left: 50px;
+    top: 60px;
+    animation-delay: 0.25s;
+}
+
+.home_background_pawn_two_rotation{
+    transform: rotateZ(135deg);
+}
+
+.home_background_pawn_three{
+    left: 50px;
+    top: 85px;
+    animation-delay: 0.5s;
+}
+
+.home_background_pawn_three_rotation{
+    transform: rotateZ(150deg);
+}
+
+.home_background_pawn_four{
+    left: 50px;
+    top: 120px;
+    animation-delay: 0.75s;
+}
+
+.home_background_pawn_four_rotation{
+    transform: rotateZ(135deg);
+}
+
+.home_background_pawn_five{
+    left: 70px;
+    top: 130px;
+    animation-delay: 1s;
+}
+
+.home_background_pawn_five_rotation{
+    transform: rotateZ(135deg);
+}
+
+.home_background_pawn_six{
+    left: 60px;
+    top: 165px;
+    animation-delay: 1.25s;
+}
+
+.home_background_pawn_six_rotation{
+    transform: rotateZ(180deg);
+}
+
+.home_background_pawn_seven{
+    left: 55px;
+    top: 185px;
+    animation-delay: 1.5s;
+}
+
+.home_background_pawn_seven_rotation{
+    transform: rotateZ(160deg);
+}
+
+.home_background_pawn_eigth{
+    left: 60px;
+    top: 210px;
+    animation-delay: 1.75s;
+}
+
+.home_background_pawn_eigth_rotation{
+    transform: rotateZ(190deg);
+}
+
+.home_background_pawn_nine{
+    left: 75px;
+    top: 240px;
+    animation-delay: 2s;
+}
+
+.home_background_pawn_nine_rotation{
+    transform: rotateZ(155deg);
+}
+
+.home_background_pawn_ten{
+    left: 60px;
+    top: 260px;
+    animation-delay: 2.25s;
+}
+
+.home_background_pawn_ten_rotation{
+    transform: rotateZ(210deg);
+}
+
+.home_background_pawn_eleven{
+    left: 60px;
+    top: 290px;
+    animation-delay: 2.5s;
+}
+
+.home_background_pawn_eleven_rotation{
+    transform: rotateZ(230deg);
+}
+
+.home_background_pawn_twelve{
+    left: 30px;
+    top: 300px;
+    animation-delay: 2.75s;
+}
+
+.home_background_pawn_twelve_rotation{
+    transform: rotateZ(260deg);
+}
+
+.home_background_pawn_thirteen{
+    left: -5px;
+    top: 320px;
+    animation-delay: 3s;
+}
+.home_background_pawn_thirteen_rotation{
+    transform: rotateZ(230deg);
+}
+
+@keyframes pawn_animation{
+    0% {transform: scale(1);}
+    50% {transform: scale(0.85);}
+    100% {transform: scale(1);}
+
+}
+
+@keyframes search_animation{
+    0%{transform: translate(0px, 0px);}
+
+}
