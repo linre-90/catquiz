@@ -17,7 +17,7 @@ type Props = {
 /**
  * Basic button for page. Behaviour can be modified with event handler. Pass event handler via props -> behaviour.
  * If button is for example choice pass expected return value -> btnValue, string or number. Style is set through StylesEnum [].
- * @param Props text -> [string], behaviour -> [React.MouseEventHandler<HTMLButtonElement>], btnValue -> [string | number], btnStyle -> StyleEnum.[white | black | whiteToBlack | blackToWhite]
+ * @param Props text -> [string], behaviour -> [React.MouseEventHandler<HTMLButtonElement>], btnValue -> [string | number], btnStyle -> StyleEnum.[white | black ]
  * @returns functional component
  * @exports AppButton --- react functional component
  * @exports StyleEnum --- buttons style defination

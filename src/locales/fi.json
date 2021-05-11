@@ -1,0 +1,8 @@
+{
+    "difficultyPage":{
+        "title": "Valitse vaikeustaso",
+        "easy": "Helppo",
+        "medium": "Normaali",
+        "hard": "Vaikea"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "difficultyPage":{
+        "title": "Select difficulty",
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard"
+    }
+}

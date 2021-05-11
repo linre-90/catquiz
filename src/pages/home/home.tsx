@@ -1,5 +1,8 @@
 import React from "react";
 import {AppButton, StyleEnum} from "../../components/button/button";
+import {useHistory} from "react-router-dom";
+import H from "history";
+import i18n from "../../i18n";
 import "./home.css";
 import "./home_animations.css";
 import "./home_questionmarks.css"
@@ -11,6 +14,7 @@ import "./home_questionmarks.css"
  * @returns Home page functional component
  */
 const HomePage: React.FC = () => {
+	let history: H.History<History> = useHistory();
 
     	/**
 	 * Eventhandler for buttons that change languages
@@ -18,7 +22,8 @@ const HomePage: React.FC = () => {
 	 * @param React.MouseEvent <HTMLButtonElement>
 	 */
   	const setLanguage = (event: React.MouseEvent<HTMLButtonElement>) => {
-    	console.log(event.currentTarget.value);
+		i18n.changeLanguage(event.currentTarget.value);
+		history.push("/difficulty");
   	}
 
     return(

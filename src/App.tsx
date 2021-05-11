@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import Headerbar from "./components/headerBar/HeaderBr";
 import Home from "./pages/home/home";
+import DifficultySelection from "./pages/selectdifficulty/selectDifficulty";
+
 import FooterComponent from "./components/footer/footer_component"
 import "./app.css"
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
@@ -8,13 +10,19 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 function App() {
   	return (
     	<div >
+			<Suspense fallback="loading">
       		<Headerbar />
 			<BrowserRouter>
 				<Switch>
 					<Route exact path="/" component={Home}></Route>
+					
+
+					
+					<Route exact path="/difficulty" component={DifficultySelection}></Route>
 				</Switch>
 			</BrowserRouter>
 			<FooterComponent />
+			</Suspense>
     	</div>
   	);
 }

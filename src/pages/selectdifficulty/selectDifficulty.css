@@ -1,0 +1,16 @@
+.selectDifficulty_headline{
+    text-align: center;
+}
+
+.selectDifficulty_btnContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+@media only screen and (min-width: 850px) {
+    .selectDifficulty_btnContainer{
+        display: block;
+        text-align: center;
+    }
+}
