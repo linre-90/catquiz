@@ -4,5 +4,11 @@
         "easy": "Helppo",
         "medium": "Normaali",
         "hard": "Vaikea"
+    },
+    "gamePage":{
+        "title": "Pelataan tasolla: ",
+        "easy": "Helppo",
+        "medium": "Normaali",
+        "hard": "Vaikea"
     }
 }
