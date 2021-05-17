@@ -10,5 +10,20 @@
         "easy": "Helppo",
         "medium": "Normaali",
         "hard": "Vaikea"
+    },
+    "quiz":{
+        "answered": "Kysymys "
+    },
+    "feedback":{
+        "header": "Näin sinä suoriuduit!",
+        "header2": "Sait ",
+        "header21": "/10 oikein! ",
+        "header3":"Alta voit tarkastaa mitkä sait oikein ja mitkä menivät väärin, voit myös oppia kissa faktoja!",
+        "question": "Kysymys: ",
+        "correct": "Oikea vastaus oli: ",
+        "details": "Tiesitkö: ",
+        "againBtn": "Pelaa uudestaan!"
+
+
     }
 }

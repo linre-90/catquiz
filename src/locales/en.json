@@ -10,5 +10,18 @@
         "easy": "Easy",
         "medium": "Medium",
         "hard": "Hard"
+    },
+    "quiz":{
+        "answered": "Question "
+    },
+    "feedback":{
+        "header": "Let's see how you performed!",
+        "header2": "You got ",
+        "header21": "/10 correct! ",
+        "header3":"Below is detailed feedback about every question, read and learn interesting cat facts!",
+        "question": "Question: ",
+        "correct": "Correct answer was: ",
+        "details": "Did you know: ",
+        "againBtn": "Play again!"
     }
 }
