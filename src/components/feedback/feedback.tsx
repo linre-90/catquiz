@@ -7,21 +7,26 @@ import { AppButton, StyleEnum } from "../button/button";
 import "./feedback.css";
 
 
-type props = { fullFeedback: any, }
-
+type props = { fullFeedback: any /* Should be : AnswerMap{question:Question, correct: number} */, }
+/**
+ * Generates feedback how user performed. TODO: fix types
+ * @param param0 props: { fullFeedback: any }
+ * @returns functional component
+ */
 const Feedback: React.FC<props> = ({fullFeedback}) => {
     let correctAmount = 0;
     let textFeedback: any[] = [];
-    let {t, i18n} = useTranslation("common");
+    let {t} = useTranslation("common");
     let history: H.History<History> = useHistory();
     const [anim, setAnim] = useState<boolean | undefined>(undefined);
     const divRef = React.useRef(null);
 
+    // for animation to run initially
     useEffect(() => {
         setAnim(true);
     }, [])
 
-
+    // calculate correct answers, and seperate object: Question to different array
     fullFeedback.forEach((element: any) => {
         if(element.correct){
             correctAmount++;
@@ -29,6 +34,7 @@ const Feedback: React.FC<props> = ({fullFeedback}) => {
         textFeedback.push(element.question);
     });
 
+    // map feedback: AnswerMap{question: Question, correct: number} to renderable list
     let finalFeedback = textFeedback.map((element, index) => 
         <div key={textFeedback.indexOf(element)} >
             <p>{!fullFeedback[index].correct? <i className="far fa-times-circle feedback_icon"></i>:<i className="far fa-check-circle feedback_icon"></i> }</p>
@@ -39,6 +45,7 @@ const Feedback: React.FC<props> = ({fullFeedback}) => {
         </div>
     );
 
+    // Playagain button function. Triggers CSSTranslation to go exited stage wich has anonymous func. that executes history.push.... 
     const playAgain = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnim(false);
     }

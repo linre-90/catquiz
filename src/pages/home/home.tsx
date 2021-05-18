@@ -11,18 +11,18 @@ import "./home_questionmarks.css"
 
 
 /**
- * Home page component. Address= /
+ * Home page component. Address= /.
+ * Combines multiple components to one page. Sets languge en/fi, default is en.
  * @returns Home page functional component
  */
 const HomePage: React.FC = () => {
 	let history: H.History<History> = useHistory();
 	const [anim, setAnim] = useState<boolean|undefined>(undefined);
-	const nodeRef = React.useRef(null);
+	const nodeRef = useRef(null);
 
 	useEffect(() => {
 		setAnim(true);
 	}, [])
-
 
     /**
 	 * Eventhandler for buttons that change languages

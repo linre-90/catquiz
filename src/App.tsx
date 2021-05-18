@@ -7,6 +7,10 @@ import FooterComponent from "./components/footer/footer_component"
 import "./app.css"
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
+/**
+ * Contains: routing, "sticky" components[header, footer]. No state.
+ * @returns React component
+ */
 function App() {
   	return (
     	<div >

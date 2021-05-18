@@ -26,7 +26,8 @@ type AnswerMap = {
 
 
 /**
- * Game play page. Loads data based on url parameter.
+ * Game play page. Loads data based on url parameter and language.
+ * Swaps components between game going and feedback to eliminate problems with browser backbutton.
  * @returns Functional componen
  */
 const Quiz: React.FC = () => {
@@ -42,7 +43,6 @@ const Quiz: React.FC = () => {
 
     // Player progress state
     const [answerMap, setAnswerMap] = useState<AnswerMap[]>([]);
-    let correct = 0;
 
     //level and lang
     const {level} = useParams<Record<string, string>>();
@@ -66,6 +66,11 @@ const Quiz: React.FC = () => {
         }
         getData();
         setAnim(true);
+        // Linting is disabled because questions should only be loaded one time
+        // Simulating componentDidMount, [] tells react/es-lint that hook is depended on some values/functions etc and based on those changes should re-render.
+        // How ever this hook is wanted to execute only once. The depencies should not change, level comes from url that triggers re-render anyway and i18n is needed for correct
+        // searching in database. The language is set on "home" page and is not changeable on other pages -> it shoul not trigger update in this hook.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // get new question after user has answered and state is updated
@@ -83,15 +88,19 @@ const Quiz: React.FC = () => {
         }else{
             shouldIncrement.current = true;
         }
+        // Linting error is disabled because this should not re-render on questions.length or currentQuestionIndex changes
+        // Question.length should not change at any point
+        // This hook simulates following behaviour [ await setAnswerMap(); incrementQuestion(); ] , it works as a callback after the state has updated.
+        // State (answermap) does not update immediately on button press, that causes answermap to be one question behind -> saves 9/10  
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [answerMap]);
 
     /**
-     * Function to check answer and to render next question.
+     * Function to check answer and to update feedback list (answerMap).
      * @param event Button click event
      */
     const answered = async (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnim(false);
-        
         let correctOrWrong: boolean;
         if(event.currentTarget.value === questions[currentQuestionIndex].correct){
             correctOrWrong = true;
@@ -106,9 +115,12 @@ const Quiz: React.FC = () => {
 
     return(
         <div className="minHeigthDiv">
-            { questions.length <= 0 && <h1 className="quiz_helper_headers">Loading</h1>}
+            {questions.length <= 0 && <h1 className="quiz_helper_headers">Loading</h1>}
+            {/* Displays firebase errors */}
             {errorMessage.length > 0 && <h1 className="quiz_helper_headers">{'ERROR: ' +  errorMessage}</h1>}
+            {/* Actual game going stage. Shows 10 questions then playing becomes false and this is not rendered*/}
             {questions.length > 0 && playing &&
+                // onExited loops animation enter exit stage together with answered function.
                 <CSSTransition in={anim} timeout={200} onExited={() => setAnim(true)} classNames='quiz-fade' unmountOnExit nodeRef={divRef}>
                     <div ref={divRef} className="quiz_wrapper">
                         <h2>{questions[currentQuestionIndex].question}</h2>
@@ -120,11 +132,12 @@ const Quiz: React.FC = () => {
                                 questions[currentQuestionIndex].false2
                             ]} 
                             eventHandler={answered}
-                            >
+                        >
                         </Answer>
                     </div>
                 </CSSTransition>
             }
+            {/* All questions have been answered renders feedback for user */}
             {!playing && answerMap.length > 0 && 
                 <div className="quiz_wrapper">
                     <Feedback fullFeedback={answerMap} />

@@ -1,6 +1,6 @@
 /**
  * Thanks go to Stackoverflow - CoolAJ86!
- *  Basic implementation of Fisher-Yates algorithim.
+ * Basic implementation of Fisher-Yates algorithim.
  * It shuffles array in place.
  * */ 
  const knuthShuffle = (array : Array<any>): Array<any> => {

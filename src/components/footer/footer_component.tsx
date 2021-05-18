@@ -2,7 +2,10 @@ import React from "react";
 import "./footer.css";
 
 
-
+/**
+ * Footer component. This is rendered in App.tsx and never rerenders.
+ * @returns Functional component
+ */
 const FooterComponent: React.FC = () => {
     return(
         <div className="footer_background">
@@ -12,13 +15,7 @@ const FooterComponent: React.FC = () => {
             <p><i>This app is for entertainment purposes only!</i></p>
             <p><i>Tämä appi on vain viihde tarkoitukseen!</i></p>
         </div>
-
-
     );
-
-
-
 }
-
 
 export default FooterComponent;

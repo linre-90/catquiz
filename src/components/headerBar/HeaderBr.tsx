@@ -1,6 +1,10 @@
 import React from "react";
 import "./headerbar.css"
 
+/**
+ * Renders header bar. Sticky component that is rendered once in App.tsx. No state.
+ * @returns Functional component
+ */
 const HeaderBar: React.FC = () => {
     return(
         <div className="headerbar_background">

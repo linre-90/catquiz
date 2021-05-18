@@ -1,6 +1,7 @@
 import React from "react";
 import "./appButton.css";
 
+// Use style enum for easy style assignment
 enum StyleEnum {
     white = "app_button_button_white",
     black = "app_button_button_black"
