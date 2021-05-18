@@ -1,0 +1,35 @@
+.feedback_wrapper{
+    margin: auto;
+    width: 95%;
+    text-align: center;
+    
+}
+
+.feedback_icon{
+    font-size: large;
+}
+
+.feedback-fade-enter {
+    opacity: 0;
+}
+.feedback-fade-enter-active {
+    opacity: 1;
+    transition: all 1000ms;
+}
+
+.feedback-fade-exit {
+    opacity: 1;
+}
+.feedback-fade-exit-active {
+    opacity: 0;
+    transition: all 1000ms;
+}
+
+@media only screen and (min-width: 1023px) {
+    .feedback_wrapper{
+        margin: auto;
+        width: 70%;
+        text-align: center;
+        
+    }
+}

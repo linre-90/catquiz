@@ -25,7 +25,7 @@ type Props = {
 
 const AppButton: React.FC<Props> = ({text, behaviour, btnValue, btnStyle}) => {
     return(
-        <button className={`${btnStyle} app_button`} value={btnValue} onClick={behaviour}> {text} </button>
+        <button className={`${btnStyle} app_button`} value={btnValue} onClick={behaviour}>{text}</button>
     );
 }
 

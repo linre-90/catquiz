@@ -34,3 +34,9 @@
     align-items: center;
     justify-content: center;
 }
+
+@media only screen and (max-width: 379px) {
+    .headerbar_iconback{
+        display: none;
+    }
+}

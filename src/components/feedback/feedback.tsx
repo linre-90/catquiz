@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {useHistory} from "react-router-dom";
+import {CSSTransition} from "react-transition-group";
 import H from "history";
 import { AppButton, StyleEnum } from "../button/button";
+import "./feedback.css";
 
 
 type props = { fullFeedback: any, }
@@ -12,6 +14,12 @@ const Feedback: React.FC<props> = ({fullFeedback}) => {
     let textFeedback: any[] = [];
     let {t, i18n} = useTranslation("common");
     let history: H.History<History> = useHistory();
+    const [anim, setAnim] = useState<boolean | undefined>(undefined);
+    const divRef = React.useRef(null);
+
+    useEffect(() => {
+        setAnim(true);
+    }, [])
 
 
     fullFeedback.forEach((element: any) => {
@@ -23,7 +31,7 @@ const Feedback: React.FC<props> = ({fullFeedback}) => {
 
     let finalFeedback = textFeedback.map((element, index) => 
         <div key={textFeedback.indexOf(element)} >
-            <p>{!fullFeedback[index].correct? <i className="far fa-times-circle"></i>:<i className="far fa-check-circle"></i> }</p>
+            <p>{!fullFeedback[index].correct? <i className="far fa-times-circle feedback_icon"></i>:<i className="far fa-check-circle feedback_icon"></i> }</p>
             <p>{t("feedback.question") + element.question}</p>
             <p>{t("feedback.correct") + element.correct}</p>
             <p>{t("feedback.details")+ element.explanation}</p>
@@ -32,18 +40,20 @@ const Feedback: React.FC<props> = ({fullFeedback}) => {
     );
 
     const playAgain = (event: React.MouseEvent<HTMLButtonElement>) => {
-        history.push("/difficulty");
+        setAnim(false);
     }
 
     return(
-        <div>
-            <h1>{t("feedback.header")}</h1>
-            <h2>{t("feedback.header2") + correctAmount + t("feedback.header21")}</h2>
-            <h3>{t("feedback.header3")}</h3>
-            <hr />
-            {finalFeedback}
-            <AppButton btnStyle={StyleEnum.black} text={t("feedback.againBtn")} behaviour={playAgain}/>
-        </div>
+        <CSSTransition in={anim} timeout={1000} onExited={() => history.push("/difficulty")} classNames='feedback-fade' unmountOnExit nodeRef={divRef}>
+            <div ref={divRef} className="feedback_wrapper">
+                <h2>{t("feedback.header")}</h2>
+                <h3>{t("feedback.header2") + correctAmount + t("feedback.header21")}</h3>
+                <h4>{t("feedback.header3")}</h4>
+                <hr />
+                {finalFeedback}
+                <AppButton btnStyle={StyleEnum.black} text={t("feedback.againBtn")} behaviour={playAgain}/>
+            </div>
+        </CSSTransition>
     );
 
 }

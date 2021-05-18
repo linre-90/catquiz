@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
+import {CSSTransition} from "react-transition-group";
 import firebase from "firebase/app"
 import "firebase/database";
 import knuthShuffle from "../../shuffle";
@@ -35,6 +36,10 @@ const Quiz: React.FC = () => {
     const [playing, setPlaying] = useState<boolean>(true);
     const shouldIncrement = useRef(false);
 
+    // animation
+    const divRef = React.useRef(null);
+    const [anim, setAnim] = useState<boolean|undefined>(undefined);
+
     // Player progress state
     const [answerMap, setAnswerMap] = useState<AnswerMap[]>([]);
     let correct = 0;
@@ -60,6 +65,7 @@ const Quiz: React.FC = () => {
             }
         }
         getData();
+        setAnim(true);
     }, []);
 
     // get new question after user has answered and state is updated
@@ -69,7 +75,7 @@ const Quiz: React.FC = () => {
                 setCurrentQuestionIndex(currentQuestionIndex + 1);
             }else{
                 setPlaying(false);
-                // TODO show player feedback
+                setAnim(false);
             }
         }
         if(shouldIncrement.current){
@@ -84,6 +90,8 @@ const Quiz: React.FC = () => {
      * @param event Button click event
      */
     const answered = async (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnim(false);
+        
         let correctOrWrong: boolean;
         if(event.currentTarget.value === questions[currentQuestionIndex].correct){
             correctOrWrong = true;
@@ -96,34 +104,32 @@ const Quiz: React.FC = () => {
         setAnswerMap(newState);
     }
 
-
     return(
-        <div>
+        <div className="minHeigthDiv">
             { questions.length <= 0 && <h1 className="quiz_helper_headers">Loading</h1>}
             {errorMessage.length > 0 && <h1 className="quiz_helper_headers">{'ERROR: ' +  errorMessage}</h1>}
             {questions.length > 0 && playing &&
-                <div className="quiz_wrapper">
-                    <h1>{questions[currentQuestionIndex].question}</h1>
-                    <h2>{t("quiz.answered") + (currentQuestionIndex + 1) + "/10"}</h2>
-                    <Answer 
-                        options={[
-                            questions[currentQuestionIndex].correct, 
-                            questions[currentQuestionIndex].false1, 
-                            questions[currentQuestionIndex].false2
-                        ]} 
-                        eventHandler={answered}
-                        >
-                    </Answer>
-                </div>
+                <CSSTransition in={anim} timeout={200} onExited={() => setAnim(true)} classNames='quiz-fade' unmountOnExit nodeRef={divRef}>
+                    <div ref={divRef} className="quiz_wrapper">
+                        <h2>{questions[currentQuestionIndex].question}</h2>
+                        <h3>{t("quiz.answered") + (currentQuestionIndex + 1) + "/10"}</h3>
+                        <Answer 
+                            options={[
+                                questions[currentQuestionIndex].correct, 
+                                questions[currentQuestionIndex].false1, 
+                                questions[currentQuestionIndex].false2
+                            ]} 
+                            eventHandler={answered}
+                            >
+                        </Answer>
+                    </div>
+                </CSSTransition>
             }
             {!playing && answerMap.length > 0 && 
                 <div className="quiz_wrapper">
                     <Feedback fullFeedback={answerMap} />
                 </div>
-            
-            
             }
-
         </div>
     );
 }

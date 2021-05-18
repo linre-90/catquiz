@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {AppButton, StyleEnum} from "../../components/button/button";
+import {CSSTransition} from 'react-transition-group'; 
+
 import {useHistory} from "react-router-dom";
 import H from "history";
 import i18n from "../../i18n";
@@ -8,27 +10,34 @@ import "./home_animations.css";
 import "./home_questionmarks.css"
 
 
-
 /**
  * Home page component. Address= /
  * @returns Home page functional component
  */
 const HomePage: React.FC = () => {
 	let history: H.History<History> = useHistory();
+	const [anim, setAnim] = useState<boolean|undefined>(undefined);
+	const nodeRef = React.useRef(null);
 
-    	/**
+	useEffect(() => {
+		setAnim(true);
+	}, [])
+
+
+    /**
 	 * Eventhandler for buttons that change languages
 	 * Buttons return value en or fi. Set language to i18n with direct event.currentTarget.value!
 	 * @param React.MouseEvent <HTMLButtonElement>
 	 */
   	const setLanguage = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setAnim(false);
 		i18n.changeLanguage(event.currentTarget.value);
-		history.push("/difficulty");
   	}
-
+	// cssTransition changes the page after animation has reached exited state
     return(
-        <div>
-            <div className="home_body">
+		<CSSTransition nodeRef={nodeRef} in={anim} timeout={1000} onExited={() => history.push("/difficulty")} classNames='home-fade' unmountOnExit >
+		<div ref={nodeRef}>
+            <div className="home_body minHeigthDiv">
 				{/*left side pawns*/}
 				<span className="home_background_pawn_common home_background_pawn_one" ><i className="fas fa-paw home_background_pawn_one_rotation"></i></span>
 				<span className="home_background_pawn_common home_background_pawn_two" ><i className="fas fa-paw home_background_pawn_two_rotation"></i></span>
@@ -76,7 +85,9 @@ const HomePage: React.FC = () => {
 				</div>
 				
       		</div>
-        </div>
+        
+		</div>
+		</CSSTransition>
     );
 }
 

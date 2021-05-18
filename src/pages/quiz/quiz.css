@@ -1,7 +1,31 @@
 .quiz_wrapper{
     text-align: center;
+    margin: auto;
 }
 
 .quiz_helper_headers{
     text-align: center;
+    margin: auto;
 }
+
+
+.quiz-fade-enter {
+    opacity: 0;
+    transform: translateX(-500px);
+}
+.quiz-fade-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 200ms;
+}
+
+.quiz-fade-exit {
+    opacity: 1;
+}
+.quiz-fade-exit-active {
+    opacity: 0;
+    transform: translateX(500px);
+    transition: all 200ms;
+}
+
+
